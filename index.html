@@ -10,9 +10,15 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
 </head>
 
 <body>
+
+    <div class="background-grid"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="cursor-glow"></div>
 
     <section id="hero">
         <h1>AI Workforce Impact 2020–2026</h1>
@@ -22,15 +28,94 @@
         </p>
     </section>
 
-    <section id="filters"></section>
+    <section id="filters" class="panel">
+        <h2>Explore the data</h2>
 
-    <section id="line-chart"></section>
+        <div class="filter-grid">
+            <select id="yearFilter">
+                <option value="all">All years</option>
+            </select>
 
-    <section id="bubble-chart"></section>
+            <select id="regionFilter">
+                <option value="all">All regions</option>
+            </select>
 
-    <section id="map"></section>
+            <select id="countryFilter">
+                <option value="all">All countries</option>
+            </select>
 
-    <section id="sankey"></section>
+            <select id="industryFilter">
+                <option value="all">All industries</option>
+            </select>
+
+            <button id="resetFilters">Reset filters</button>
+        </div>
+    </section>
+
+    <section id="kpi" class="kpi-grid">
+        <div class="kpi-card">
+            <span>Average AI Adoption</span>
+            <h3 id="kpiAdoption">0</h3>
+        </div>
+    
+        <div class="kpi-card">
+            <span>Average Displacement</span>
+            <h3 id="kpiDisplacement">0%</h3>
+        </div>
+    
+        <div class="kpi-card">
+            <span>Highest Risk Industry</span>
+            <h3 id="kpiIndustry">-</h3>
+        </div>
+    
+        <div class="kpi-card">
+            <span>Average Wage Premium</span>
+            <h3 id="kpiWage">0%</h3>
+        </div>
+    </section>
+
+    <section id="line-chart" class="chart-panel">
+        <div class="section-heading">
+            <span>Trend over time</span>
+            <h2>AI Adoption vs Workforce Displacement</h2>
+            <p>Comparison of average AI adoption and workforce displacement from 2020 to 2026.</p>
+        </div>
+
+        <div id="lineChart"></div>
+    </section>
+
+    <section id="bubble-chart" class="chart-panel">
+        <div class="section-heading">
+            <span>Industry impact</span>
+            <h2>Industries Most Affected by AI</h2>
+            <p>Each bubble represents an industry. Larger bubbles mean higher workforce displacement.</p>
+        </div>
+
+        <div id="bubbleChart"></div>
+    </section>
+
+    <section id="map" class="chart-panel">
+        <div class="section-heading">
+            <span>Global impact</span>
+            <h2>Global AI Workforce Impact Map</h2>
+            <p>Countries are colored by average AI adoption index based on the selected filters.</p>
+        </div>
+
+        <div id="worldMap"></div>
+    </section>
+
+    <section id="donut-section" class="chart-panel">
+        <div class="section-heading">
+            <span>Workforce distribution</span>
+            <h2>AI Workforce Impact Distribution</h2>
+            <p>
+                Distribution of workforce impact based on displacement,
+                stable workforce and newly created AI roles.
+            </p>
+        </div>
+    
+        <div id="donutChart"></div>
+    </section>
 
     <script src="script.js"></script>
 

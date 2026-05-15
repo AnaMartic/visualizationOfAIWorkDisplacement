@@ -4,10 +4,31 @@
     box-sizing: border-box;
 }
 
-body {
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
     background: #0B1020;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#00F5FF, #7A5CFF);
+    border-radius: 999px;
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, rgba(0, 245, 255, 0.12), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(122, 92, 255, 0.16), transparent 35%),
+        #0B1020;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 section {
@@ -24,4 +45,225 @@ p {
     margin-top: 20px;
     max-width: 600px;
     line-height: 1.7;
+}
+
+.background-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background-image:
+        linear-gradient(rgba(0, 245, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.glow {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.28;
+    z-index: -2;
+}
+
+.glow-1 {
+    top: 80px;
+    left: -120px;
+    background: #00F5FF;
+}
+
+.glow-2 {
+    right: -120px;
+    bottom: 120px;
+    background: #7A5CFF;
+}
+
+#hero {
+    min-height: 100vh;
+    padding: 120px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+#hero h1 {
+    max-width: 900px;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1;
+    background: linear-gradient(90deg, #00F5FF, #7A5CFF, #00FF9C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(0, 245, 255, 0.25);
+}
+
+#hero p {
+    margin-top: 28px;
+    max-width: 720px;
+    color: #B6C2D9;
+    font-size: 1.15rem;
+}
+
+.kpi-card,
+.chart-panel,
+.panel {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.kpi-card:hover,
+.chart-panel:hover,
+.panel:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 245, 255, 0.45);
+    box-shadow: 0 0 60px rgba(0, 245, 255, 0.13);
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.12), transparent 65%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.panel {
+    min-height: auto;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 32px;
+    border: 1px solid rgba(0, 245, 255, 0.25);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.08);
+}
+
+.panel h2 {
+    margin-bottom: 24px;
+    color: #00F5FF;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+select,
+button {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 245, 255, 0.35);
+    background: #111827;
+    color: white;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    background: linear-gradient(135deg, #00F5FF, #7A5CFF);
+    color: #050816;
+    font-weight: bold;
+}
+
+.kpi-grid {
+    min-height: auto;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.kpi-card {
+    padding: 28px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(0, 245, 255, 0.25);
+    box-shadow: 0 0 35px rgba(0, 245, 255, 0.08);
+}
+
+.kpi-card span {
+    font-size: 0.85rem;
+    color: #9CA3AF;
+}
+
+.kpi-card h3 {
+    margin-top: 14px;
+    font-size: 2rem;
+    color: #00F5FF;
+}
+
+.chart-panel {
+    max-width: 1200px;
+    margin: 60px auto;
+    min-height: auto;
+    padding: 40px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    box-shadow: 0 0 50px rgba(0, 245, 255, 0.08);
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading span {
+    color: #00F5FF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
+
+.section-heading h2 {
+    margin-top: 10px;
+    font-size: 2rem;
+}
+
+.section-heading p {
+    color: #9CA3AF;
+}
+
+.axis path,
+.axis line {
+    stroke: rgba(255, 255, 255, 0.2);
+}
+
+.axis text {
+    fill: #9CA3AF;
+}
+
+.tooltip {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(11, 16, 32, 0.95);
+    border: 1px solid rgba(0, 245, 255, 0.35);
+    color: white;
+    font-size: 0.85rem;
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.15);
+}
+
+.country {
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+#worldMap svg {
+    width: 100%;
+    height: auto;
+}
+
+#donutChart svg {
+    width: 100%;
+    height: auto;
 }
